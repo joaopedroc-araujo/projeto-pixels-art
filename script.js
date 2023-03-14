@@ -1,10 +1,10 @@
-const colorPallete = document.getElementById('color-palette');
+const colorPalette = document.getElementById('color-palette');
 const randomColorButton = document.createElement('button');
 
 const newButton = () => {
     randomColorButton.innerHTML = 'Cores aleatórias';
-    randomColorButton.id = 'button-random-color'
-    colorPallete.appendChild(randomColorButton);
+    randomColorButton.id = 'button-random-color';
+    colorPalette.appendChild(randomColorButton);
     randomColorButton.style.margin = '10px';
     randomColorButton.style.verticalAlign = '230%';
 };
@@ -19,15 +19,34 @@ const arrayOfColors = [];
 
 function btnColor() {
     for (let index = 1; index < colors.length; index += 1) {
-        let red = parseInt(Math.random() * 255);
-        let green = parseInt(Math.random() * 255);
-        let blue = parseInt(Math.random() * 255);
-        let colorResult = `rgb(${red}, ${green}, ${blue})`;
+        const red = parseInt(Math.random() * 255);
+        const green = parseInt(Math.random() * 255);
+        const blue = parseInt(Math.random() * 255);
+        const colorResult = `rgb(${red}, ${green}, ${blue})`;
         colors[index].style.backgroundColor = colorResult;
-        arrayOfColors.push(colorResult)[index];
+
+        if (index >= colors.length - 3) {
+            arrayOfColors.push(colorResult);
+        }
     }
-    localStorage.setItem('colorPallete', JSON.stringify(arrayOfColors));
+    localStorage.setItem('colorPalette', JSON.stringify(arrayOfColors.slice(-3)));
+    savedColors();
 };
+
+const savedColors = () => {
+    let localSavedColors = JSON.parse(localStorage.getItem('colorPalette'));
+    if (localSavedColors && localSavedColors.length === 3) {
+        for (let index = 0; index < 3; index += 1) {
+            colors[colors.length -3 + index].style.backgroundColor = localSavedColors[index];
+        }
+    }
+};
+
+window.onload = () => {
+    newButton();
+    newBoard();
+    savedColors();
+}
 
 const newBoard = () => {
     const firstPixel = document.getElementById('pixel-board');
@@ -44,9 +63,9 @@ const newBoard = () => {
         pixels.style.width = '40px';
         pixels.style.height = '40px';
         pixels.style.backgroundColor = 'white';
-        pixels.style.alignContent = 'center';
+        firstPixel.style.marginLeft = '120px';
     }
 };
 
-newBoard();
-newButton();
+
+
