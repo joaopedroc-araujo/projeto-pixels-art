@@ -4,6 +4,7 @@ li {
     border: solid 1px black;
     width: 70px;
     height: 70px;
+    margin: 5px;
 }
 
 li:nth-child(1) {
