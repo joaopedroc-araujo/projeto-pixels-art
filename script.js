@@ -98,8 +98,7 @@ const changeColors = () => {
 };
 
 const resetBtn = () => {
-    const newButton = document.createElement('div');
-    colorPalette.appendChild(newButton);
+    const newButton = document.getElementById('reset-button');
     const resetButton = document.createElement('button');
     resetButton.innerHTML = 'Limpar';
     resetButton.id = 'clear-board';
