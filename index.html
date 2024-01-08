@@ -10,15 +10,24 @@
 </head>
 
 <body>
-    <h1 id="title">Paleta de Cores</h1>
-
+    <h1 id="title">Projeto Pixels Art</h1>
     <ul id="color-palette">
         <li class="color"></li>
         <li class="color"></li>
         <li class="color"></li>
         <li class="color"></li>
     </ul>
-    <div id="reset-button"></div>
+    <span id="span-grid">Escolha o tamanho do grid (entre 5 e 20):</span>
+    <input
+    type="number"
+    id="grid-size"
+    min="5"
+    max="50"
+    value="5"
+    >
+    <br>
+    <button id="resize-button">Redimensionar Grid</button>
+    <button id="reset-grid">Resetar Grid</button>
     <div id="pixel-board"></div>
 
 </body>
