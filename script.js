@@ -180,6 +180,7 @@ document.querySelector('#reset-grid').addEventListener('click', () => {
   localStorage.setItem('gridSize', gridValue);
   localStorage.removeItem('pixelBoard');
   newBoard(gridValue);
+  document.querySelector('#grid-size').value = 5;
 });
 
 const initializePage = () => {
